@@ -90,3 +90,27 @@ def plot_energy(t, pe, ke, te, method):
     plt.title(f'Energy of Pendulum - {method} Method')
     plt.legend()
     plt.show()
+
+# Animation method
+def animate_pendulum(theta, title):
+    fig, ax = plt.subplots()
+    ax.set_xlim((-1.2 * L, 1.2 * L))
+    ax.set_ylim((-1.2 * L, 1.2 * L))
+    ax.set_aspect('equal')
+    ax.set_xlabel('x (m)')
+    ax.set_ylabel('y (m)')
+    ax.set_title(title)
+    line, = ax.plot([], [], 'o-', lw=2)
+
+    def init():
+        line.set_data([], [])
+        return line,
+
+    def animate(i):
+        x = L * np.sin(theta[i])
+        y = -L * np.cos(theta[i])
+        line.set_data([0, x], [0, y])
+        return line,
+
+    ani = animation.FuncAnimation(fig, animate, init_func=init, frames=len(theta), interval=20, blit=True)
+    plt.show()
