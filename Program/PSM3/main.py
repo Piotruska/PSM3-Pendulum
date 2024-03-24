@@ -78,3 +78,15 @@ def calculate_energy(theta, omega):
     kinetic_energy = 0.5 * m * L**2 * omega**2
     total_energy = potential_energy + kinetic_energy
     return potential_energy, kinetic_energy, total_energy
+
+# Plot energies method
+def plot_energy(t, pe, ke, te, method):
+    plt.figure(figsize=(10, 6))
+    plt.plot(t, pe, label='Potential Energy')
+    plt.plot(t, ke, label='Kinetic Energy')
+    plt.plot(t, te, label='Total Energy')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Energy (J)')
+    plt.title(f'Energy of Pendulum - {method} Method')
+    plt.legend()
+    plt.show()
