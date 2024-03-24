@@ -29,3 +29,12 @@ def euler_step(theta, omega, dt):
     return theta_new, omega_new
 
 
+#Improved Eulers method step function for single iteration
+def midpoint_step(theta, omega, dt):
+    k1_theta, k1_omega = D(theta, omega)
+    theta_half = theta + 0.5 * dt * k1_theta
+    omega_half = omega + 0.5 * dt * k1_omega
+    k2_theta, k2_omega = D(theta_half, omega_half)
+    theta_new = theta + dt * k2_theta
+    omega_new = omega + dt * k2_omega
+    return theta_new, omega_new
