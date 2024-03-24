@@ -21,3 +21,11 @@ def D(theta, omega):
     return dtheta_dt, domega_dt
 
 
+#Euler's method step function for single iteration
+def euler_step(theta, omega, dt):
+    dtheta_dt, domega_dt = D(theta, omega)
+    theta_new = theta + dt * dtheta_dt
+    omega_new = omega + dt * domega_dt
+    return theta_new, omega_new
+
+
