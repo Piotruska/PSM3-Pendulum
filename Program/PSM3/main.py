@@ -14,3 +14,10 @@ t0 = 0              # Initial time (s)
 tmax = 100         # Maximum time (s)
 dt = 0.01           # Time step (s)
 
+# Define differential equation method
+def D(theta, omega):
+    dtheta_dt = omega
+    domega_dt = -(g / L) * np.sin(theta)
+    return dtheta_dt, domega_dt
+
+
