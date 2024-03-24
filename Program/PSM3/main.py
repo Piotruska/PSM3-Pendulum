@@ -59,3 +59,15 @@ def rk5_step(theta, omega, dt):
     theta_new = theta + (dt / 8) * (k1_theta + 2 * k2_theta + 2 * k3_theta + 2 * k4_theta + k5_theta)
     omega_new = omega + (dt / 8) * (k1_omega + 2 * k2_omega + 2 * k3_omega + 2 * k4_omega + k5_omega)
     return theta_new, omega_new
+
+# Simulate pendulum motion
+def simulate(method):
+    theta = [theta0]
+    omega = [omega0]
+    t = [t0]
+    while t[-1] < tmax:
+        theta_new, omega_new = method(theta[-1], omega[-1], dt)
+        theta.append(theta_new)
+        omega.append(omega_new)
+        t.append(t[-1] + dt)
+    return np.array(theta), np.array(omega), np.array(t)
