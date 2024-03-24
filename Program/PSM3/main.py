@@ -120,3 +120,9 @@ def animate_pendulum(theta, title):
     theta_midpoint, omega_midpoint, t_midpoint = simulate(midpoint_step)
     theta_rk4, omega_rk4, t_rk4 = simulate(rk4_step)
     theta_rk5, omega_rk5, t_rk5 = simulate(rk5_step)
+
+    # Calculate energies
+    pe_euler, ke_euler, te_euler = calculate_energy(theta_euler, omega_euler)
+    pe_midpoint, ke_midpoint, te_midpoint = calculate_energy(theta_midpoint, omega_midpoint)
+    pe_rk4, ke_rk4, te_rk4 = calculate_energy(theta_rk4, omega_rk4)
+    pe_rk5, ke_rk5, te_rk5 = calculate_energy(theta_rk5, omega_rk5)
