@@ -126,3 +126,15 @@ def animate_pendulum(theta, title):
     pe_midpoint, ke_midpoint, te_midpoint = calculate_energy(theta_midpoint, omega_midpoint)
     pe_rk4, ke_rk4, te_rk4 = calculate_energy(theta_rk4, omega_rk4)
     pe_rk5, ke_rk5, te_rk5 = calculate_energy(theta_rk5, omega_rk5)
+
+    plot_energy(t_euler, pe_euler, ke_euler, te_euler, 'Euler')
+    animate_pendulum(theta_euler, 'Pendulum Motion Animation - Euler Method')
+
+    plot_energy(t_midpoint, pe_midpoint, ke_midpoint, te_midpoint, 'Midpoint')
+    animate_pendulum(theta_midpoint, 'Pendulum Motion Animation - Midpoint Method')
+
+    plot_energy(t_rk4, pe_rk4, ke_rk4, te_rk4, 'RK4')
+    animate_pendulum(theta_rk4, 'Pendulum Motion Animation - RK4 Method')
+
+    plot_energy(t_rk5, pe_rk5, ke_rk5, te_rk5, 'RK5')
+    animate_pendulum(theta_rk5, 'Pendulum Motion Animation - RK5 Method')
