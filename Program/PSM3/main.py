@@ -114,3 +114,9 @@ def animate_pendulum(theta, title):
 
     ani = animation.FuncAnimation(fig, animate, init_func=init, frames=len(theta), interval=20, blit=True)
     plt.show()
+
+    # Perform simulations
+    theta_euler, omega_euler, t_euler = simulate(euler_step)
+    theta_midpoint, omega_midpoint, t_midpoint = simulate(midpoint_step)
+    theta_rk4, omega_rk4, t_rk4 = simulate(rk4_step)
+    theta_rk5, omega_rk5, t_rk5 = simulate(rk5_step)
