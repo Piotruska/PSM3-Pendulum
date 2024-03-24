@@ -60,7 +60,7 @@ def rk5_step(theta, omega, dt):
     omega_new = omega + (dt / 8) * (k1_omega + 2 * k2_omega + 2 * k3_omega + 2 * k4_omega + k5_omega)
     return theta_new, omega_new
 
-# Simulate pendulum motion
+# Simulate pendulum motion method
 def simulate(method):
     theta = [theta0]
     omega = [omega0]
@@ -71,3 +71,10 @@ def simulate(method):
         omega.append(omega_new)
         t.append(t[-1] + dt)
     return np.array(theta), np.array(omega), np.array(t)
+
+# Method to calculate KE and PE and TE
+def calculate_energy(theta, omega):
+    potential_energy = m * g * L * (1 - np.cos(theta))
+    kinetic_energy = 0.5 * m * L**2 * omega**2
+    total_energy = potential_energy + kinetic_energy
+    return potential_energy, kinetic_energy, total_energy
