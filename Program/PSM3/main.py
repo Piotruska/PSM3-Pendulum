@@ -38,3 +38,14 @@ def midpoint_step(theta, omega, dt):
     theta_new = theta + dt * k2_theta
     omega_new = omega + dt * k2_omega
     return theta_new, omega_new
+
+#Runge-Kutta 4th method step function for single iteration
+def rk4_step(theta, omega, dt):
+    k1_theta, k1_omega = D(theta, omega)
+    k2_theta, k2_omega = D(theta + 0.5 * dt * k1_theta, omega + 0.5 * dt * k1_omega)
+    k3_theta, k3_omega = D(theta + 0.5 * dt * k2_theta, omega + 0.5 * dt * k2_omega)
+    k4_theta, k4_omega = D(theta + dt * k3_theta, omega + dt * k3_omega)
+    theta_new = theta + (dt / 6) * (k1_theta + 2 * k2_theta + 2 * k3_theta + k4_theta)
+    omega_new = omega + (dt / 6) * (k1_omega + 2 * k2_omega + 2 * k3_omega + k4_omega)
+    return theta_new, omega_new
+
